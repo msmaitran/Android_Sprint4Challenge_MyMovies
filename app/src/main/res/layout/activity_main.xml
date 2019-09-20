@@ -10,7 +10,7 @@
 
     <EditText
         android:id="@+id/et_search"
-        android:hint="@string/et_search"
+        android:hint="@string/movie_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
