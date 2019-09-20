@@ -1,6 +1,7 @@
 package com.lambdaschool.datapersistencesprintchallenge.retrofit
 
 import com.google.gson.GsonBuilder
+import com.lambdaschool.sprint4challenge_mymovies.apiaccess.MovieConstants
 import com.lambdaschool.sprint4challenge_mymovies.model.MovieSearchResult
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -17,7 +18,6 @@ interface MoviesAPI {
     fun getMovieList(@Query("query") movieName: String, @Query("api_key") apiKey: String): Call<MovieSearchResult>
 
     companion object {
-        private const val BASE_URL = "https://developers.themoviedb.org/3/search/"
 
         fun create(): MoviesAPI {
             val logger = HttpLoggingInterceptor().apply {
@@ -38,7 +38,7 @@ interface MoviesAPI {
 
             val retrofit = Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl(BASE_URL)
+                .baseUrl(MovieConstants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build()
             return retrofit.create(MoviesAPI::class.java)
