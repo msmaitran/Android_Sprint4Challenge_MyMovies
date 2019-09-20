@@ -7,13 +7,13 @@ import androidx.room.Query
 import com.lambdaschool.datapersistencesprintchallenge.model.FavoriteMovie
 
 @Dao
-interface FavoritesDAO {
+interface MovieDAO {
 
     @Insert
-    fun addFavoriteMovie(): List<FavoriteMovie>
+    fun addFavoriteMovies(): List<FavoriteMovie>
 
     @Query("SELECT * FROM FavoriteMovie")
-    fun getAllFavoriteMovies(): List<FavoriteMovie>
+    fun getAllMovies(): List<FavoriteMovie>
 
     @Delete()
     fun deleteFavoriteMovie()

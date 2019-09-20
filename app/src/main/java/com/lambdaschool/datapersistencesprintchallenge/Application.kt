@@ -23,7 +23,7 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        
+
         favoritesDBBuilder = FavoritesDBBuilder(applicationContext)
 
         // "Timber" Library

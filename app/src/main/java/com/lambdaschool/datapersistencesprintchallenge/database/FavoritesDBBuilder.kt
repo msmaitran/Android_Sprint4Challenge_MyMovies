@@ -8,7 +8,7 @@ class FavoritesDBBuilder(val context: Context) {
     private val database by lazy {
         Room.databaseBuilder(
             context.applicationContext,
-            FavoritesDB::class.java, "favorites_database"
+            MovieDB::class.java, "favorites_database"
         ).fallbackToDestructiveMigration().build()
     }
 }
