@@ -1,21 +1,22 @@
 package com.lambdaschool.datapersistencesprintchallenge.database
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import com.lambdaschool.datapersistencesprintchallenge.model.FavoriteMovie
 
 @Dao
 interface MovieDAO {
 
-    @Insert
-    fun addFavoriteMovies(): List<FavoriteMovie>
+    @Query("SELECT * FROM movie_table")
+    fun getAllMovies(): LiveData<List<FavoriteMovie>>
 
-    @Query("SELECT * FROM FavoriteMovie")
-    fun getAllMovies(): List<FavoriteMovie>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insert(movie: FavoriteMovie)
+
+    @Update(onConflict = OnConflictStrategy.REPLACE)
+    fun update(movie: FavoriteMovie)
 
     @Delete()
-    fun deleteFavoriteMovie()
+    fun delete(movie: FavoriteMovie)
 
 }
