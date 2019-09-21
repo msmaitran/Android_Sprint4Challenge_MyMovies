@@ -1,6 +1,6 @@
 package com.lambdaschool.sprint4challenge_mymovies.model
 
-class MovieSearchResult(val results: List<MovieOverview>)
+class MovieSearchResult(val results: MutableList<MovieOverview>)
 
 class MovieOverview(
         val id: Int,

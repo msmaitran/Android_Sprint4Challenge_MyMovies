@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.lambdaschool.datapersistencesprintchallenge.R
 import com.lambdaschool.datapersistencesprintchallenge.model.FavoriteMovie
+import com.lambdaschool.datapersistencesprintchallenge.viewmodel.MovieViewModel
 import kotlinx.android.synthetic.main.favorites_list_item.view.*
 
-class FavoritesRecyclerViewAdapter (val favoriteMovies: MutableList<FavoriteMovie>) :
+class FavoritesRecyclerViewAdapter (val favoriteMovies: MutableList<FavoriteMovie>, private val movieViewModel: MovieViewModel) :
     RecyclerView.Adapter<FavoritesRecyclerViewAdapter.ViewHolder>() {
 
     var context: Context? = null
@@ -36,8 +37,14 @@ class FavoritesRecyclerViewAdapter (val favoriteMovies: MutableList<FavoriteMovi
         holder.favoriteMovieName.text = favorite.title
         holder.favoriteMovieYear.text = favorite.releaseDate
         holder.favoriteWatched.isChecked = favorite.isWatched
+        holder.favoriteWatched.setOnCheckedChangeListener {
+                compoundButton, b -> favorite.isWatched = b
+            movieViewModel.update(favorite)
+            notifyItemChanged(position)
+        }
         holder.favoriteMovieName.setOnLongClickListener {
             favoriteMovies.removeAt(position)
+            movieViewModel.delete(favorite)
             notifyItemRemoved(position)
             true
         }

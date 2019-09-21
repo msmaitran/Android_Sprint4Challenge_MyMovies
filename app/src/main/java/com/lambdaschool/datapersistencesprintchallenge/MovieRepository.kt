@@ -11,7 +11,7 @@ class MovieRepository(context: Context) {
 
     private var movieDao: MovieDAO
 
-    private var movieList: LiveData<List<FavoriteMovie>>
+    private var movieList: LiveData<MutableList<FavoriteMovie>>
 
     init {
         val database: MovieDB = MovieDB.getInstance(context)!!
@@ -19,7 +19,7 @@ class MovieRepository(context: Context) {
         movieList = movieDao.getAllMovies()
     }
 
-    fun getAllMovies(): LiveData<List<FavoriteMovie>> {
+    fun getAllMovies(): LiveData<MutableList<FavoriteMovie>> {
         return movieList
     }
 

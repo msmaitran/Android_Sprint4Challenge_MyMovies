@@ -10,9 +10,9 @@ class MovieViewModel (application: Application ): AndroidViewModel(application) 
 
     private var repository: MovieRepository = MovieRepository(application)
 
-    private var movieList: LiveData<List<FavoriteMovie>> = repository.getAllMovies()
+    private var movieList: LiveData<MutableList<FavoriteMovie>> = repository.getAllMovies()
 
-    fun getAllMovies(): LiveData<List<FavoriteMovie>> {
+    fun getAllMovies(): LiveData<MutableList<FavoriteMovie>> {
         return movieList
     }
 

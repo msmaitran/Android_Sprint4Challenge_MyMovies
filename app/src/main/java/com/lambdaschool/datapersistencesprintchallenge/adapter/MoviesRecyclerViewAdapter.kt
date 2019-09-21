@@ -9,10 +9,12 @@ import android.widget.Toast
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.lambdaschool.datapersistencesprintchallenge.R
+import com.lambdaschool.datapersistencesprintchallenge.model.FavoriteMovie
+import com.lambdaschool.datapersistencesprintchallenge.viewmodel.MovieViewModel
 import com.lambdaschool.sprint4challenge_mymovies.model.MovieOverview
 import kotlinx.android.synthetic.main.movies_list_item.view.*
 
-class MoviesRecyclerViewAdapter (val searchedMovie: MutableList<MovieOverview>) :
+class MoviesRecyclerViewAdapter (private val searchedMovie: MutableList<MovieOverview>, private val movieViewModel: MovieViewModel) :
     RecyclerView.Adapter<MoviesRecyclerViewAdapter.ViewHolder>() {
 
     var context: Context? = null
@@ -38,6 +40,7 @@ class MoviesRecyclerViewAdapter (val searchedMovie: MutableList<MovieOverview>) 
         holder.movieName.text = movie.title
         holder.movieYear.text = movie.release_date
         holder.movieSelected.setOnClickListener {
+            movieViewModel.insert(FavoriteMovie(movie.title, movie.release_date, isWatched = false))
             Toast.makeText(it.context,"${movie.title} was added to Favorite Movies", Toast.LENGTH_SHORT).show()
         }
     }

@@ -10,6 +10,6 @@ class FavoriteMovie(
     var releaseDate: String,
     var isWatched: Boolean,
     @PrimaryKey(autoGenerate = true)
-    val id: Int
+    val id: Int = 0
 
 )

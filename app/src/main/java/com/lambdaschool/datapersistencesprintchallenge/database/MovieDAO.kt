@@ -8,7 +8,7 @@ import com.lambdaschool.datapersistencesprintchallenge.model.FavoriteMovie
 interface MovieDAO {
 
     @Query("SELECT * FROM movie_table")
-    fun getAllMovies(): LiveData<List<FavoriteMovie>>
+    fun getAllMovies(): LiveData<MutableList<FavoriteMovie>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(movie: FavoriteMovie)
