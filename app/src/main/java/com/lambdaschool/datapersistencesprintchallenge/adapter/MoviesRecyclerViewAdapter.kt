@@ -41,6 +41,7 @@ class MoviesRecyclerViewAdapter (private val searchedMovie: MutableList<MovieOve
         holder.movieYear.text = movie.release_date
         holder.movieSelected.setOnClickListener {
             movieViewModel.insert(FavoriteMovie(movie.title, movie.release_date, isWatched = false))
+            holder.movieSelected.setBackgroundResource(R.color.colorAccent)
             Toast.makeText(it.context,"${movie.title} was added to Favorite Movies", Toast.LENGTH_SHORT).show()
         }
     }
