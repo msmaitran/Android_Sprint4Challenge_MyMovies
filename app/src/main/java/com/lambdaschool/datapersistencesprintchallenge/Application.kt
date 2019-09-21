@@ -1,7 +1,7 @@
 package com.lambdaschool.datapersistencesprintchallenge
 
 import android.app.Application
-import com.lambdaschool.datapersistencesprintchallenge.database.FavoritesDBBuilder
+import com.lambdaschool.datapersistencesprintchallenge.database.MovieDBBuilder
 import timber.log.Timber
 
 class App : Application() {
@@ -18,13 +18,13 @@ class App : Application() {
     }
 
     companion object {
-        var favoritesDBBuilder: FavoritesDBBuilder? = null
+        var movieDBBuilder: MovieDBBuilder? = null
     }
 
     override fun onCreate() {
         super.onCreate()
 
-        favoritesDBBuilder = FavoritesDBBuilder(applicationContext)
+        movieDBBuilder = MovieDBBuilder(applicationContext)
 
         // "Timber" Library
         if (BuildConfig.DEBUG) {
